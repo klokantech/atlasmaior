@@ -1,5 +1,128 @@
-<html>
-<body>
-Atlas Maior
-</body>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+    <meta name="author" content="KlokanTech">
+    <meta name="description" content="Klokan Technologies GmbH">
+    <link href="http://klokantech.github.io/styles/base.css" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Klokan Technologies GmbH</title>
+    <style>
+      a, a:hover{
+        color: #e68200;
+      }
+      #navbar-top-small{
+        background-color: #e68200;
+      }
+      .card{
+        height: 180px;
+      }
+      .card img{
+        position: absolute;
+      }
+      .card .card-text{
+        margin-left: 180px;
+      }
+      .title img{height: 30px; margin-bottom: -6px;}
+      .footer a, .footer a:hover{color: #fff;}
+      .progress-block{display: block; margin: 0 auto;width:410px;}
+      .paginator a{vertical-align: middle; font-size: 18px;}
+      .paginator a.current{font-weight: bold;}
+    </style>
+  </head>
+  <body>
+
+    <div id="navbar-top-small" class="padx-4">
+      <p class="title padl-4 right">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFgAAABVCAYAAADNCyPqAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3woPCSAp5YiL7AAACPNJREFUeNrtnX2QVlUdx79nWRCUl9zEhRkCKlF0RDCCwLYwZwxQaXRk7AWZlpy0miaQGYsKc/mjGhvTpPJtNKVS7MVsHCqyUQERMG3AFfEFJ9iVUpvQMBYEcT/98Zyddu7cc55z733u3fvs7G9m/3ie55zf+Z3vnnvO7/zerlRyAtqIp9Y6kF0NGqBcaQDgAYDrmxpLuG9NkHS6pImSxkua72jaCrxfUqekDknPGmNeL9t8TAkAPVPSAknnSJop6eQM7DolPSlps6SHjDF7+/qQ66uBpwA3An8nX3oGWGWfiv4NMDAEWAw8QfHUDfwBuBAw/QpgoBFoBfZQDtoOLOgXAAPzgd2Uk7YC0+sSYGAMcD/lp3eBm4DhdQMwcAnwBvVFe4GZpb4qA4OBGyT9TtKJdXYfmCBpM7C0lHow8F5JD0r6WEZWByVttX/tkl6WtEjSNTFtl0naIumDks6W1CJpuqTjMsqwVtISY8yRUmwRwDjgxQyP537gNuCTwOAs1jRgGHApcC/QlUGmTcCoPgcYOAXYl3ISO4AlwNA8zJXAicDVGS4zT2YFORPAduV2phB8l11lJnCcTPZge8H5MvBqSpBHFA6wXR3PJRT2MPANoDHhWDUxuAPDgZutapaE/hy3deUGMNAArE8o5F+BSSmFrKlHA5iV4lZ5c5EAr0oo3E+B4xLwHwK0AN+0h9UrDr4vAfcAy4BpQEPCJ3Bdwnl8NneAgXnWcBJKSxPwPg9YAxxIeSi9BvwY+FDgeIOA1Qn4dwGTcwMYGJngUHsXWBTA0wCXAc/W+Ga2ETgvcF7XJuC7JeGTkgjgWxII8oUAfmfbvTlPWhdiCwauT8Dza0kADlWVZlpPQQitMMZc73s0JV0raaWkQR4+xyQ9LWmXpN2S3pJ0SNJwexWfJGmqpClVbqRdkpYaY+7yPUmS7pb0+YD5dUmaZIx5tWYrGNgQ+N/9jU+/BUZZtcdFR4FfAxeHWriAJuByy9d3PtwJDPHwGQo8FTjP22q2RQBzAwfd7QMFGAu0e4D9ETAu483pDOAXHhn/BBzv6T8BeCtgru8Ap9QK4G2BAH/cw+MkYKfnQJqsGhIw294Y4+jhKiv5i4HzvSczwMCMrI+M1Wu3OPq12T05D7v0CcDPHOPeV0WzeTRgzkeA0VkBXhMw0EHgZA+PWx1bwiIVQMB3HHIv8/SZHriwVqQG2N523g4YpM3D40KHjnxZkdZ0YKVjBZ7p6fOrQE+ISQvw4oABDllju8u4EmfKXN4XLgvgDsfFwXj09BD6cFqAHwhgfkfCR/P3RcYlxKhh22Nk+rSnz6YADL6XGGArTIhHYJbnWh1Vd/4DNPel483urVFz5QueVRzyFO9KA3BLAONOj2DLY9pfXQbvJnB7jGwXeC5GRwKwGJ0U4GsCmN7kmUTUePM6MKwkAI+3WkxvesDT/o8BWFzkAthlGfpIgKyPOZhOkRQ9ne8yxhwuA8DGmE5J6yJfX+BxDW0IYDvL9YML4LMCmG52fD835rs1Khf9PPJ5qKQ5jraPB/A7Kxhgu69WM/HtNca84fgtemXeY4x5sWQAPyzpnSpy99COAH4Tk6zgMZKGVGH4coL/5oaSgStjzCFrCq26Cu3Wti8twI0xzsOJATIOcTgdG2JW/06Vk3ZKmt3r81SPI7ValM8I4EpJR3t9d1DSb1VAYN0lZUQX+HoBAYWFZBm9WdIVfKCIQYoA+O2SAnykvwB8QkkBHt5fAG4uKcAnFTFIo6QlMVrEdVX6bVLFCxtHt0fUvFNLCvBpkc8dktocbVeqEofso6titIjY03VswAn5F8/pvCPS9qGSahEvReS839P2lSp4HEhii3gt8p+II59H9W+Rz3Py8rtlAHecKnEVPrl72g6TVM3b3RG8Bxtj8HXo2UaAJsdvj0Y+j5R0fskW8MKY7x5xtJ0WwG9v0kOuPYBpi+P79apE5fSmJSUDOBrB80+PzSEk76Q9KcDbAph+wnF3329B7k2XhgRqFLQ9zItZlfcZY7odXc4NYLstqRBZPRpx3uRflgDchpiAw27gVEf73DwaWX1yxpFicG4fA3xljEw+b0aIT+45T3+vMFm9ygscBpCmPgL3NOC/EXmOAad7+jwegMF30wKcKS7C8ojL5Vjviw3LCdxRjidqtadP7nERtYjsGe+IVry3KN3YxqhtdkSD+iIt843ssQ1CY9OaPTwWOvo96JtgjcAd7Yj5PewrZVBIbJptkDm60vJZ5cn2nJwTuC2eLNTPefoZ4LFCoitto9D44DlV+PzEs49/O0mqV8B+u9oeYHH01Sr9Q+OD7w6QJUjgJBHuI6qsjO9X0auXAiNTAttsn5Q3PZlPV1ThMbHwCHfbsCY5GpbXFVUOz8NUqqW0Ah/wXGYGAZOBr9jom2Menv8G5laRayjwdOA8bw3ELRjgmQmcfSsC+E11RDq6EgB32lSDR6xG8HxM+BOelIH3VZHHBB7oPYf62JoCbBvXOk+u0QYJ7s/Jq9sRGkUP/CCvPLkkACfN9Lw8kO97gG8B/6gRsM8DXwo9NIHrSpHp2WOJSpirvCwB78GW/50kr0PxgtUcZhFeh2KQzW0uR65ygE7rolvSqGD2RP+UJ3x0DXA+MCYF76YU2fafSTFOapNf0noRT1GeehGzKXO9iF77ZpqKJyvo+4on3QnlLrbiSW/HoT2p0xxCCxmo2RPEIEvVqWeoVJ0algfA1hq4nHqtOhVZybWomzaX7HXTjqdS0WqttXGkpY3UqG5a5hLjxph9wDlKX/mvSZWomKskdQFbVano11P5zxXbNgqYoUp8wzT9v/JfVmP+WkmtxpijKhNZPfYG6peOJrmlFbZFxDC9mPqrvrqHnKqv5rWam6mf+sE3Uk/1gyMDzI8JsisL1W8F7BirWSv5v3EglLa7MjPrEuCIwr/Y4eHNm7qt7aH/vYXAMfAU4IcU8x6NNvrwPRpleRPMRZI+KmmGsqUcdKhS3+0JleRNMH0OcIxQ4yWdoUpC4wRJ81QpIR6ljapkkXbav3ZjzL9KNheVnhh4Yd8A+WgA4AGA65v+B1KOfHYYr9WfAAAAAElFTkSuQmCC" alt="GR logo">
+        Georeferencer
+      </p>
+    </div>
+
+    <div class="container main-small">
+
+      <div class="row">
+        <div class="col8 offset2">
+          <p class="big">Repository title <span class="icon">→</span> Collection title</p>
+          <h2 class="center">Progress</h2>
+          <div class="progress-block">
+
+            <div class="progress">
+              <div class="bar">
+                <div class="segment reviewed" style="width: 20%;">
+                  <div class="segment-label">0</div>
+                </div>
+                <div class="segment edited" style="width: 30%;">
+                  <div class="segment-label maps">40</div>
+                </div>
+                <div class="segment" style="width: 50%;">
+                  <div class="segment-label maps">105</div>
+                </div>
+              </div>
+              <div class="bar-count maps">290</div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col8 offset2">
+          <h2 class="center">Maps</h2>
+          <div class="card">
+            <img src="http://images-1.georeferencer.com/images/iiif/320141073587/square/150,150/0/native.jpg">
+            <div class="card-text">
+              <h3>Střední Čechy</h3>
+              <p>Scale: 1 : 220000, Description: Čechy střední (Česko),
+                Creator: Wagner, Jan Eduard, Publisher: F. Kytka.</p>
+              <a href="#georeferencer/map1" class="btn-small-gray-dark">Georeference</a>
+              <a href="#georeferencer/map1" class="btn-small-gray-light">Vizualize</a>
+            </div>
+          </div>
+
+          <div class="card">
+            <img src="http://images-1.georeferencer.com/images/iiif/958927286241/square/150,150/0/native.jpg">
+            <div class="card-text">
+              <h3>Ethnog. Austria-Hungary</h3>
+              <p>Scale: 1 : 4000000, Publisher: Andree, Richard; Times (London, England).</p>
+              <a href="#georeferencer/map2" class="btn-small-gray-dark">Georeference</a>
+              <a href="#georeferencer/map2" class="btn-small-gray-light">Vizualize</a>
+            </div>
+          </div>
+
+          <div class="card">
+            <img src="http://images-3.georeferencer.com/images/iiif/650273534466/square/150,150/0/native.jpg">
+            <div class="card-text">
+              <h3>Europe - Physical.  Pergamon World Atlas.</h3>
+              <p>Scale: 1 : 12500000, Publisher: Polish Army Topography Service.</p>
+              <a href="#georeferencer/map3" class="btn-small-gray-dark">Georeference</a>
+              <a href="#georeferencer/map3" class="btn-small-gray-light">Vizualize</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col8 offset2 center">
+          <p class="paginator">
+            <a href="#page-1">1</a> | 
+            <a class="current" href="#page-2">2</a> | 
+            <a href="#page-3">3</a> 
+            <a class="icon" href="#next">></a>
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer">
+      <div class="row container">
+        <div class="col12">
+          <a href="http://www.klokantech.com">&copy; 2015 Klokan Technologies GmbH</a>
+        </div>
+      </div>
+    </div>
+
+  </body>
 </html>
