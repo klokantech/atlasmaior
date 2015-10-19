@@ -39,6 +39,11 @@
         background-color: #FFA32C;
         border-color: #FFA32C;
       }
+      label{
+        display: inline-block;
+        line-height: 18px;
+      }
+
     </style>
   </head>
   <body>
@@ -89,7 +94,11 @@
       <div class="row">
         <div class="col8 offset2">
           <h2 class="center">Maps</h2>
-          <a href="#random" class="btn">Try random map</a>
+          <p class="padb-3"><a href="#random" class="btn">Try random map</a></p>
+          <form>
+            <input type="checkbox" id="filter-notreferenced" checked>
+            <label for="filter-notreferenced">display only not georeferenced maps</label>
+          </form>
           <div id="cards">
             Loading...
             <!--
