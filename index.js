@@ -42,6 +42,7 @@ updateStats();
 
 var cardsPerPage = 5;
 
+var rawCollection = null;
 var collection = null;
 
 function createSingleItem(data) {
@@ -74,7 +75,7 @@ function createPaginator() {
   var paginator = document.getElementById('paginator');
   var numPages = Math.ceil(collection.length / cardsPerPage);
   var html = '';
-  for (var i = 1; i <= numPages; i++) {
+  for (var i = 1; i < numPages; i++) {
     html += '<a href="#" onclick="showPage(' + i + ', this);return false;">' + i + '</a>';
     if (i < numPages) html += ' | ';
   }
@@ -83,9 +84,45 @@ function createPaginator() {
   showPage(1);
 };
 
+var filter = document.getElementById('filter-notreferenced');
+var filterCollection = function() {
+  var onlyNonGeoreferenced = filter.checked;
+  if (onlyNonGeoreferenced) {
+    collection = [];
+    rawCollection.forEach(function(el) {
+      if (el.visualize_url == null) collection.push(el);
+    });
+  } else {
+    collection = rawCollection;
+  }
+  createPaginator();
+}
 
 
 JSONP('http://earth.georeferencer.com/collection/95215265/objects/json', function(data) {
-  collection = data;
-  createPaginator();
+  rawCollection = data;
+  filterCollection();
 });
+
+filter.onchange = function() {
+  filterCollection();
+};
+
+
+
+
+// top contributors
+var topContribUrl = 'http://cynefin.georeferencer.com/repository/49189082/top-contributors.json?limit=5';
+google.load('visualization', '1', {'packages': ['table'], 'callback': function() {
+  var tableContainer = document.getElementById('top-contributors');
+  var table = new google.visualization.Table(tableContainer);
+  var query = new google.visualization.Query(topContribUrl, {});
+  query.send(function(response) {
+    if (response.isError()) {
+      throw Error(response.getMessage() + ' ' + response.getDetailedMessage());
+    } else {
+      var dataTable = response.getDataTable();
+      table.draw(dataTable, {showRowNumber: true});
+    }
+  });
+}});
