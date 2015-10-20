@@ -49,8 +49,8 @@ function createSingleItem(data) {
   var html = '<div class="card">';
   html += '<img src="' + data['thumbnail_url'] + '/square/150,150/0/native.jpg">';
   html += '<div class="card-text"><h3>' + data['title'] + '</h3><p></p>';
-  html += '<a href="' + data['georeference_url'] + '" class="btn-small-gray-dark">Georeference</a>';
-  if (data['visualize_url']) html += '<a href="' + data['visualize_url'] + '" class="btn-small-gray-light">Vizualize</a>';
+  html += '<a href="' + data['georeference_url'] + '" target="_blank" class="btn-small-gray-dark">Georeference</a>';
+  if (data['visualize_url']) html += '<a href="' + data['visualize_url'] + '" target="_blank" class="btn-small-gray-light">Vizualize</a>';
   html += '</div></div>';
   return html;
 }
