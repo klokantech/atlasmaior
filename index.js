@@ -62,7 +62,7 @@ function showPage(num, el) {
 
   var html = '';
   for (var i = 0; i < cardsPerPage; i++) {
-    var id = num * cardsPerPage + i;
+    var id = (num - 1) * cardsPerPage + i;
     if (collection[id]) html += createSingleItem(collection[id]);
   }
   cards.innerHTML = html;
@@ -75,7 +75,7 @@ function createPaginator() {
   var paginator = document.getElementById('paginator');
   var numPages = Math.ceil(collection.length / cardsPerPage);
   var html = '';
-  for (var i = 1; i < numPages; i++) {
+  for (var i = 1; i <= numPages; i++) {
     html += '<a href="#" onclick="showPage(' + i + ', this);return false;">' + i + '</a>';
     if (i < numPages) html += ' | ';
   }
@@ -84,17 +84,22 @@ function createPaginator() {
   showPage(1);
 };
 
-var filter = document.getElementById('filter-notreferenced');
+var filterById = document.getElementById('filter-id');
+var filterNotReferenced = document.getElementById('filter-notreferenced');
 var filterCollection = function() {
-  var onlyNonGeoreferenced = filter.checked;
-  if (onlyNonGeoreferenced) {
-    collection = [];
-    rawCollection.forEach(function(el) {
-      if (el.visualize_url == null) collection.push(el);
-    });
-  } else {
-    collection = rawCollection;
-  }
+  var onlyNonGeoreferenced = filterNotReferenced.checked;
+  var idFilter = filterById.value;
+  collection = [];
+  rawCollection.forEach(function(el) {
+    var include = true;
+    if (onlyNonGeoreferenced) {
+      include = include && (el.visualize_url == null);
+    }
+    if (idFilter.length > 0) {
+      include = include && (el.id.indexOf(idFilter) == 0);
+    }
+    if (include) collection.push(el);
+  });
   createPaginator();
 }
 
@@ -108,10 +113,8 @@ JSONP('http://earth.georeferencer.com/collection/95215265/objects/json', functio
   filterCollection();
 });
 
-filter.onchange = function() {
-  filterCollection();
-};
-
+filterById.onkeypress = filterById.oninput = filterCollection;
+filterNotReferenced.onchange = filterCollection;
 
 
 
