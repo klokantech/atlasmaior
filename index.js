@@ -84,19 +84,21 @@ function createPaginator() {
   showPage(1);
 };
 
-var filterById = document.getElementById('filter-id');
+var filterByText = document.getElementById('filter-text');
 var filterNotReferenced = document.getElementById('filter-notreferenced');
 var filterCollection = function() {
   var onlyNonGeoreferenced = filterNotReferenced.checked;
-  var idFilter = filterById.value;
+  var textFilter = filterByText.value.toLowerCase();
   collection = [];
   rawCollection.forEach(function(el) {
     var include = true;
     if (onlyNonGeoreferenced) {
       include = include && (el.visualize_url == null);
     }
-    if (idFilter.length > 0) {
-      include = include && (el.id.indexOf(idFilter) == 0);
+    if (textFilter.length > 0) {
+      include = include &&
+                (el['id'].toLowerCase().indexOf(textFilter) !== -1 ||
+                 el['title'].toLowerCase().indexOf(textFilter) !== -1);
     }
     if (include) collection.push(el);
   });
@@ -113,7 +115,7 @@ JSONP('http://earth.georeferencer.com/collection/95215265/objects/json', functio
   filterCollection();
 });
 
-filterById.onkeypress = filterById.oninput = filterCollection;
+filterByText.onkeypress = filterByText.oninput = filterCollection;
 filterNotReferenced.onchange = filterCollection;
 
 
